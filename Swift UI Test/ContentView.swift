@@ -8,9 +8,12 @@
 
 import SwiftUI
 
+let dark = Color("Dark")
+let white = Color.white
+
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, World!")
+    var body: some View{
+        Home()
     }
 }
 
@@ -19,3 +22,24 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+struct Home : View {
+    @State var darkMode = true
+    @State var color = white
+    var body: some View{
+        ZStack{
+            ( darkMode ? dark : white ).edgesIgnoringSafeArea(.all)
+            
+            Toggle(isOn: $darkMode) {
+                Text(darkMode ? "Dark" : "Light")
+                .foregroundColor(darkMode ? white : dark)
+            }.padding()
+           
+        }
+       
+    }
+    
+    
+    
+}
+
